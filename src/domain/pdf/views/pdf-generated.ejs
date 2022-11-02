@@ -1,0 +1,575 @@
+<style>
+    .title { 
+       font-size: 14px;
+       text-align: center;
+       font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+    .subtitle {
+        font-size: 12px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: justify
+    }
+
+    .paragraph {
+        font-size: 12px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: justify;
+        line-height: 16px;;
+    }
+    #container {
+        margin: 30px;
+    }
+
+    #assinaturas {
+        font-size: 12px;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    table {
+        border: ¨#000, solid, 1px;
+        width: 100%;
+        margin-bottom : .5em;
+        padding: 3px;
+        font-size: 14px;
+        border-collapse: collapse;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    td {
+        padding: 3px;
+    }
+
+    b {
+        text-transform: uppercase;
+    }
+
+</style>
+
+<div id="container">
+<h1 class="title">INSTRUMENTO PARTICULAR DE CONTRATO DE LOCAÇÃO DE IMÓVEIS</h1>
+<br>
+<p class="paragraph">
+    Entre as partes, de um lado, como LOCADOR(A), item 2.1, e de outro lado como LOCATÁRIO(A), item
+    2.2, está justo e contratado a locação para fins <b><%= finalidade %></b> do imóvel, item 1.1, nesta cidade, mediante as
+    cláusulas e condições seguintes, com base na Lei nº 8.245 de 1991 e alterações pela Lei 12.112 de
+    2009, que reciprocamente outorgam, aceitam e se obrigam a cumprir:
+</p>
+<h2 class="subtitle">DADOS DO CONTRATO DE LOCAÇÃO</h2>
+<p class="paragraph">
+    1. OBJETO DO CONTRATO
+    1.1 <b><%= objContrato %></b>, localizado(a) na <b class="card"><%= endObjeto %></b>, <b><%= numObjeto %></b> - <b><%= bairroObjeto %></b>,
+    <b><%= cidadeObjeto %></b> - <b><%= ufObjeto %></b>, CEP: <b><%= cepObjeto %></b>.
+</p>
+
+<p class="paragraph">2. CONTRATANTES</p>
+<p class="paragraph">
+    2.1 <b>LOCADOR(A)</b> <b><%= locador %></b>, <b><%= nacionalidadeLocador %></b>, <b><%= estadoCivilLocador %></b>, 
+    <b><%= profissaoLocador %></b>, portador(a) do RG nº <b><%= rgLocador %></b>, <b><%= orgaoExpedidor %></b>/<b><%= ufExpedicao %></b>, 
+    inscrito(a) no CPF nº <b><%= cpfLocador %></b>, residente e domiciliado(a) na <b><%= ruaLocador %></b>,
+    <b><%= numLocador %></b>, <b><%= compLocador %></b>, <b><%= bairroLocador %></b>, <b><%= cidadeLocador %></b>, 
+    <b><%= ufLocador %></b>, CEP: <b><%= cepLocador %></b>.
+</p>
+
+<p class="paragraph">
+    2.2 <b>LOCATÁRIO(A)</b> <b><%= locatario %></b>, <b><%= nacionalidadeLocatario %></b>, <b><%= estadoCivilLocatario %></b>, <b><%= profissaoLocatario %></b>, portador(a)
+    do RG <b><%= rgLocatario %></b>, <b><%= orgaoExpedidorLocatario %></b>/<b><%= ufExpedicaoLocatario %></b>, inscrito(a) no CPF n°<b><%= cpfLocatario %></b>, 
+    residente e domiciliado(a) na <b><%= ruaLocatario %></b>, <b><%= numLocatario %></b>, <b><%= compLocatario %></b>, <b><%= bairroLocatario %></b>, <b><%= cidadeLocatario %></b>, 
+    <b><%= ufLocatario %></b>, CEP: <b><%= cepLocatario %></b>.
+</p>
+
+<p class="paragraph">
+    2.3 <b>CORRETOR(A)/INTERMEDIADOR(A):</b> <b><%= nomeCorretor %></b>, <b><%= nacionalidadeCorretor %></b>, <b><%= estadoCivilCorretor %></b>,
+    <b><%= profissaoCorretor %></b>, inscrito(a) no CPF n° <b><%= cpfCorretor %></b>, portador(a) do RG n° <b><%= rgCorretor %></b>, <b><%= orgaoExpedidorCorretor %></b>/<b><%= ufExpedicaoCorretor %></b> CRECI 12ª Região - PA/AP <b><%= numCreci %></b>, residente e domiciliado(a) na <b><%= ruaCorretor %></b>,
+    <b><%= numCorretor %></b>, CEP: <b><%= cepCorretor %></b>, <b><%= bairroCorretor %></b>, <b><%= cidadeCorretor %></b>, <b><%= ufCorretor %></b>. Neste ato como intermediador(a) da Locação e responsável
+    pelo cadastro e contrato do cliente candidato a locatário. Para isto serão devidos pelo LOCADOR o valor
+    de R$ <b><%= valorServicoCorretor %>,00</b> ( <b><%= valorServicoEscrito %></b> ) no ato da assinatura deste. INSTITUIÇÃO DE PAGEMENTO: <b><%= bancoCorretor %></b>,
+    AG: <b><%= agCorretor %></b> CONTA: <b><%= contaCorretor %></b>, PIX: <b><%= pixCorretor %></b>.
+</p>
+
+<p class="subtitle">
+    <b>3. QUADRO INFORMATIVO DE ELEMENTOS DO CONTRATO DE LOCAÇÃO</b>
+</p>
+
+<table border="">
+    <tr>
+        <td>3.1 Tipo</td>
+        <td><b><%= finalidade %></b></td>
+    </tr>
+    <tr>
+        <td>3.2 Prazo de Vigência</td>
+        <td><b>R$ <%= prazoVigencia %> meses</b></td>
+    </tr>
+
+    <tr>
+        <td>3.3 Início</td>
+        <td><b><%= inicio %></b></td>
+    </tr>
+
+    <tr>
+        <td>3.4 Término</td>
+        <td><b><%= termino %></b></td>
+    </tr>
+
+    <tr>
+        <td>3.5 Valor Mensal do Aluguel (Incluso
+            condomínio e IPTU)</td>
+        <td><b>R$ <%= valorMensal %>,00</b> - <b>(<%= valorMensalAluguelEscrito %>)</b></td>
+    </tr>
+
+    <tr>
+        <td>3.6 Vencimento</td>
+        <td><b>Dia <%= diaVencimento %> de cada mês</b></td>
+    </tr>
+
+    <tr>
+        <td>3.7 Reajuste</td>
+        <td><b>Pelo IGPM ou substituto</b></td>
+    </tr>
+
+    <tr>
+        <td>3.8 Juros legais de mora ao mês</td>
+        <td><b>Um por cento (1%).</b></td>
+    </tr>
+
+    <tr>
+        <td>3.9 Atualização Financeira mensal do atraso</td>
+        <td><b>SELIC</b></td>
+    </tr>
+
+    <tr>
+        <td>3.10 Penalidade</td>
+        <td><b>10,00 % de Multa não compensável e nem restituível</b></td>
+    </tr>
+
+    <tr>
+        <td>3.11 Demais encargos</td>
+        <td><b>Honorários advocatício de 10%, custas e
+            sucumbência.</b></td>
+    </tr>
+
+    <tr>
+        <td>3.12 Finalidade da locação</td>
+        <td><b><%= finalidadeLocacao %></b></td>
+    </tr>
+
+    <tr>
+        <td>3.13 Garantia de Caução</td>
+        <td><b>R$ <%= valorGarantiaCaucao %>,00</b></td>
+    </tr>
+
+    <tr>
+        <td>3.14 Normas de Regência</td>
+        <td><b>Dia <%= diaVencimento %> de cada mês (início <%= inicio %>) </b></td>
+    </tr>
+</table>
+<br>
+<br>
+<p class="subtitle">
+    <b>4. OBJETO DA LOCAÇÃO - O objeto do presente contrato é a locação do imóvel mencionado no item 1.1</b>
+</p>
+
+<p class="paragraph">
+    4.1. A impressão do presente contrato não constitui em reserva do imóvel para locação, por isto o mesmo
+    deverá ser devolvido assinado até 03 (três) dias após sua impressão.
+</p>
+<br>
+<p class="subtitle">
+    <b>5. DESTINAÇÃO</b>
+</p>
+
+<p class="paragraph">
+    a. O LOCATÁRIO, identificado no item 2.2 utilizará o imóvel exclusivamente para fins COMECIAIS, 
+    destino que não poderá ser alterado sem o consentimento escrito, temporária, gratuita ou onerosamente.
+</p>
+
+<p class="subtitle">
+    <b>6. PRAZO</b>
+</p>
+
+<p class="paragraph">
+    a. A locação será pelo prazo determinado no item 3.2 O prazo inicial e final está descrito nos itens 3.3 e 3.4, respectivamente.
+</p>
+
+<p class="paragraph">
+    b. Antes do término do presente período de locação, com antecedência de no mínimo trinta (30) dias,
+    havendo interesse de ambas as partes, poderá ser renovado o presente contrato mediante
+    comunicação do interesse e nova negociação e pactuação na forma escrita.
+</p>
+
+<p class="paragraph">
+    c. Caso o locatário permaneça no imóvel após o término do prazo de locação estipulado, a locação será
+    prorrogada por tempo indeterminado (artigo 46 e seguintes da Lei do Inquilinato). Todas as cláusulas
+    contratuais ora pactuadas manter -se-ão inalteradas, inclusive a responsabilidade do fiador pelo
+    pagamento das obrigações assumidas neste contrato pelo locatário. Em conformidade com a Lei do
+    Inquilinato n.º 8.245, de 18 de Outubro de 1991.
+</p>
+
+<p class="subtitle">
+    <b>7. PREÇO</b>
+</p>
+
+<p class="paragraph">
+    <b>7.1</b> O aluguel mensal do imóvel é R$ <b><%= valorMensal %>,00</b> Incluso Condomínio e IPTU, estipulado no
+    item 3.5, o mesmo poderá ser reajustado, após o período de um ano de locação do contrato,
+    pelo índice IGPM ou pelo valor a ser acordado entre as partes, no período cumulativamente
+    anterior ou outro índice oficial determinando pelo Governo Federal que venha substituí-lo. Caso venha
+    a ser permitido pela legislação em vigor, o locador poderá reduzir a periodicidade do reajuste presente
+    neste contrato, mediante comunicação prévia ou notificação judicial ou extrajudicial ao locatário.
+</p>
+
+<p class="paragraph">
+    <b>7.2</b> Ocorrendo a renovação da locação ou ainda em casos de renovação automática ou ação renovatória,
+    os valores de aluguéis serão atualizados ao valor de mercado vigente à época, independente do
+    reajuste anual previsto contratualmente.
+</p>
+
+<p class="paragraph">
+    <b>7.3</b> Forma, local, e data de pagamento - O pagamento deverá ser realizado pontualmente até o dia
+    determinado no item 3.6 de cada mês estendendo-se esse prazo para o primeiro dia útil seguinte,
+    caso coincida com domingo ou feriado.
+</p>
+
+<p class="paragraph">
+    <b>7.4</b>O pagamento deverá ser realizado diretamente na Conta Corrente do <b><%= bancoLocador %></b> AG: <b><%= agLocador %></b>
+    CONTA CORRENTE: <b><%= contaLocador %></b> de titularidade de <b><%= titularConta %></b>, 
+    neste ato, como proprietario(a) do imóvel, mediante aviso do depositante ao credor.
+</p>
+
+<p class="paragraph">
+    <b>7.5</b>O LOCADOR não aceita pagamentos via cheque.
+</p>
+
+<p class="paragraph">
+    <b>7.6</b>Atraso no pagamento - ultrapassando o dia de vencimento estipulado no item 3.6, o aluguel será
+    acrescido de multa, juros de mora ao mês mencionados nos itens 3.8, 3.9 e 3.10, acrescido de
+    atualização monetária pró-rata “die” cumulativamente, apurada pela aplicação do índice oficial
+    determinado pelo governo. Seja qual for o motivo, os valores em atraso que por ventura não tiverem
+    sido cobrados pelo <b>LOCADOR</b> ou foram deduzidos pelo <b>LOCATÁRIO</b> nas datas de seus vencimentos
+    poderão ser cobrados de uma única vez.
+</p>
+
+<p class="paragraph">
+    <b>7.7</b>Para evitar o pagamento de débitos indevidos, o <b>LOCATÁRIO</b> não deve pagar por débitos anteriores a
+    locação, exceto se de certa forma impedir ou dificultarem o uso do imóvel. Neste caso, o <b>LOCATÁRIO</b>
+    poderá quitá-los e abater estes valores nos alugueis desde que comunique formalmente a <b>LOCADOR</b>
+    com <b>05 (cinco)</b> dias úteis de antecedência sua intenção, e obtenha autorização expressa do mesmo;
+    caso contrário, a <b>LOCADOR</b> estaráobrigado a efetuar o pagamento dos referidos débitos, a menos que
+    já tiverem sido pagos ou forem comprovadamente indevidos.
+</p>
+
+<p class="subtitle">
+    <b>8. CONDIÇÕES GERAIS</b>
+</p>
+
+<p class="paragraph">
+    <b>8.1</b>Além dos aluguéis, como encargos, também ocorrendo por conta exclusiva do LOCATÁRIO:
+</p>
+
+<p class="paragraph">
+    <b>i. Despesas de Consumo</b> – De energia elétrica, despesas ordinárias, desde que
+    incidam ou venham a incidir sobre o imóvel. Os comprovantes dos pagamentos
+    deverão ser entregues ao <b>LOCADOR</b> mensalmente até o dia 15 do mês subsequente,
+    ou sempre que solicitados pelo mesmo, e no encerramento do contrato, conforme a
+    situação.
+</p>
+
+<p class="paragraph">
+    <b>ii. Troca de Titularidade da Conta de Energia</b> – Fica o locatário obrigado na vigência
+    deste contrato, solicitar a concessionária de energia um levantamento da atual
+    situação de energia, e caso necessário, a ligação ou religação da mesma
+    imediatamente após a entrega das chaves. O <b>LOCATÁRIO</b> deve também transferir a
+    titularidade da conta de energia para seu nome, requisitando que as referidas faturas
+    sejam emitidas em seu nome até o final da locação. O <b>LOCADOR</b> e O <b>LOCATÁRIO</b>
+    concordam que os débitos anteriores não deverão ser pagos pelo <b>LOCATÁRIO</b>, já
+    que os débitos são pessoais. Após a desocupação do imóvel e a entrega das chaves,
+    o <b>LOCATÁRIO</b> deverá solicitar o desligamento da energia, para que a concessionária
+    não gere contas futuras, ou mesmo, consumo indevido, pagando ao final da locação a
+    conta residual de energia. Caso o <b>LOCATÁRIO</b> deixe de atender ao disposto nesta
+    cláusula, o mesmo <b>AUTORIZA</b> a <b>LOCADOR</b> e/ou pessoa responsável, a lhe
+    representar junto a concessionária de energia elétrica <%= ciaEletrica %>, realizando
+    qualquer pedido que esteja relacionado à locação deste contrato, podendo para tanto:
+    solicitar mudança de titularidade da unidade consumidora , transferência de possíveis
+    débitos, presentes e futuros, para UC's que estiverem em seu nome, pedir ligação e
+    desligamentos, desde que decorram do contrato de locação firmado. Nesses termos,
+    fica desde já autorizado, o representante e/ou pessoa responsável. A desempenhar o
+    estabelecido nesta clausula. Fica a critério do <b>LOCADOR</b>, fazer uso desta autorização,
+    não representando a mesma em uma obrigação, haja vista que é uma
+    responsabilidade do <b>LOCATÁRIO</b> promover as respectivas solicitações e alterações
+    junto as concessionárias, e as alterações ficam condicionadas a apresentação de
+    documentos pessoais do <b>LOCATÁRIO</b> autenticados em cartório. O imóvel ora locado
+    poderá estar sem energia, seja por corte, pedido de desligamento ou outro motivo,
+    não sendo necessário o fornecimento de energia elétrica para o início do contrato,
+    bastando para isto tão somente a assinatura deste instrumento.
+</p>
+
+<p class="paragraph">
+    <b>iii. Autorizações</b> - O <b>LOCATÁRIO</b> declara ter tido amplo e irrestrito acesso ao imóvel ora
+    locado, sendo uma obrigação do <b>LOCATÁRIO</b> a realização de consultas prévias aos
+    órgãos competentes anteriormente a assinatura deste contrato. Para se certificar que
+    o imóvel serve a destinação mencionada neste contrato, como a sua adequação a lei
+    de zoneamento urbano. Ficará sob a responsabilidade e custo do <b>LOCATÁRIO</b>,
+    mediante autorização prévia e expressa do <b>LOCADOR</b>, as possíveis adaptações de
+    layout aprovadas, necessárias ao uso do imóvel, devem ser autorizadas mediante
+    solicitação prévia do <b>LOCATÁRIO</b> a <b>LOCADOR</b>.
+</p>
+
+<p class="paragraph">
+    iv. Satisfação de todas as exigências do Poder Público, relativas à finalidade e ao uso do
+    imóvel locado.
+</p>
+
+<p class="paragraph">
+    v. O LOCATÁRIO deve realizar revisões na rede elétrica e hidráulica com o intuito de
+    evitar curtos circuitos, identificar se a voltagem da rede elétrica (de cada tomada)
+    instalada no imóvel é compatível com seus equipamentos, impedir perda de corrente
+    e vazamentos, devendo inclusive solicitar as concessionárias (de energia e água) que
+    identifiquem possíveis desvios.
+
+    <p class="paragraph">
+        <b>Paragráfo único</b>: o reajuste condominial e taxas extras condominiais, caso haja, serão por conta do
+        <b>LOCADOR</b>, exceto <b>TAXAS DE UTILIZAÇÃO DE ÁREAS COMUNS E POSSIVEIS MULTAS</b>.
+    </p>
+</p>
+
+<p class="paragraph">
+    <b>8.2. Correspondências</b> - Obriga-se o <b>LOCATÁRIO</b> a remeter a <b>LOCADOR</b>, dentro das 24 (vinte e quatro)
+    horas de seu recebimento, quaisquer correspondências, intimações ou notificações que forem
+    endereçadas ao imóvel ora locado e que não tenha como destinatário a <b>LOCATÁRIA</b>.
+</p>
+
+<p class="paragraph">
+    <b>8.3. Animais</b> - Fica a cargo do <b>LOCATÁRIO</b> consultar previamente as normas do condomínio, como a
+    convenção e regulamento interno. Neste caso estará obrigada a tomar os devidos cuidados para a
+    boa manutenção do imóvel.
+</p>
+
+<p class="paragraph">
+    <b>8.4</b>. O <b>LOCATÁRIO</b> concorda que, para efeito de encaminhamento de qualquer correspondência, visto,
+    cobrança, notificações ou interpelações, judiciais ou não, de que trata este contrato, a <b>LOCADOR</b>
+    utilizará os endereços fornecidos no presente contrato ou aquele endereço que, em substituição, as
+    partes se comunicarem formalmente por escrito.
+</p>
+
+<p class="subtitle">
+    <b>9. CONSERVAÇÃO</b>
+</p>
+
+<p class="paragraph">
+    <b>9.1.Vistoria Periódica</b> - O <b>LOCADOR</b> poderá inspecionar o imóvel, pessoalmente, ou através de
+    representantes, mediante agendamento prévio, sendo tal vistoria imprescindível antes da restituição, a
+    fim de verificar a fiel observância das obrigações assumidas pelo <b>LOCATÁRlO</b> neste contrato, o qual
+    não poderá, sob pretexto algum, fazer oposição a esse direito. O <b>LOCADOR</b> poderá solicitar a
+    devolução do imóvel caso o imóvel esteja sofrendo mau uso e esteja em condição pior que a
+    encontrada no início da locação. O <b>LOCATÁRIO</b> poderá contestar o Termo de Vistoria Extraordinario
+    ou final do Imóvel no prazo de 15 (quinze) dias, para isto, deverá encaminhar O <b>LOCADOR</b>
+    correspondência protocolada ou e-mail. A contestação da vistoria não corresponde em uma solicitação
+    de reparos, haja vista que os reparos e reformas constituem objeto do contrato de seu encargo, e,
+    quando anterior ao pacto, deveriam ter sido condicionados anteriormente a locação, mesmo que o
+    Termo de Vistoria do Imóvel, por erro, esteja em desacordo com a realidade, já que o <b>LOCATÁRIO</b>
+    visitou o imóvel, seja pessoalmente ou através de um representante, antes da locação e conhece o
+    estado atual de conservação, e que sua avaliação levou em consideração os possíveis desgastes e
+    reparos que o imóvel possa necessitar.
+</p>
+
+<p class="paragraph">
+    <b>9.2</b>. Conservação - O <b>LOCATÁRIO</b> reconhece que recebeu e obriga-se a manter o imóvel limpo e bem
+    cuidado, conforme o termo de vistoria em anexo e o disposto neste contrato, atesta o perfeito estado
+    de conservação e higiene, com as respectivas instalações hidráulicas, elétricas e sanitárias, bem como
+    suas ferragens, janelas e balancis em vidro e blindex, box em blindex, portas em madeira e vidro, pisos,
+    forros, louças de banheiro, área de serviço e cozinha, e pinturas com bom aspecto e funcionamento,
+    além de toda a sua mobília, devendo, para isso, serem feitos, ao fim da locação, pintura com tinta da
+    mesma qualidade e nas mesmas cores encontradas no imóvel, reparos, consertos ou substituições
+    necessárias se for o caso, deixando o imóvel conforme foi recebido no início da locação e descrito no
+    Termo de Vistoria de Imóvel em anexo.
+</p>
+
+<p class="paragraph">
+    <b>9.3</b>. Manutenção - O <b>LOCATÁRIO</b> satisfará à próprias custas, com solidez e perfeição, todos os reparos
+    e consertos de que necessite ou venha necessitar o imóvel locado. A manutenção de que trata este
+    contrato comporta tanto a manutenção preventiva como a corretiva. Desta forma, os bens, como os
+    equipamentos elétricos e os eletrônicos, devem ser sempre utilizados, tendo em vista que a sua
+    preservação em longo prazo depende do seu uso contínuo.
+</p>
+
+<p class="paragraph">
+    <b>9.4</b>.<b>Benfeitorias e acessões</b> - As benfeitorias, necessárias e úteis, que o imóvel precise ou venha
+    necessitar serão de responsabilidade (custo) do <b>LOCATÁRIO</b>. As benfeitorias que vierem a ser
+    introduzidas, aderirão automaticamente ao imóvel locado, integrando a plena propriedade do
+    LOCADOR, todavia, o consentimento escrito do <b>LOCADOR</b> será imprescindível. A autorização
+    especificará se a benfeitoria autorizada deverá ser mantida no imóvel ou removida ao final da locação
+    para reestruturação de suas características originais, como ora se encontrava. Caso a autorização
+    seja omissa, o <b>LOCADOR</b> resguarda seu direito de ao final da locação solicitar que estas modificações
+    sejam alteradas para o estado anterior a locação. O <b>LOCATÁRIO</b> renuncia, desde logo,
+    irrevogavelmente, a todo direito de indenização, compensação ou retenção, relativo aos valores
+    despendidos.
+</p>
+
+<p class="paragraph">
+    <b>9.5</b>. <b>Reforma e modificações</b> - Não é permitido ao <b>LOCATÁRIO</b> fazer obras, adaptações e reparos que
+    modifiquem a estrutura, a fachada, as características do imóvel ou o coloque em risco; podendo, no
+    tanto, efetuar as adaptações necessárias, mediante projeto de profissisonais competentes,
+    registrados nos orgãos e concessionárias da área, e sempre com a autorização escrita do
+    <b>LOCADOR</b>, mas sem direito a indenização ou retenção, ao final. As modificações necessárias para
+    que o imóvel se adeque ao seu destino, tais como as modificações na rede elétrica, de combate a
+    incêndio, entre outras, são de responsabilidade do <b>LOCATÁRIO</b> e também deverão ser comunicadas
+    e após receber prévia a expressa autorização do <b>LOCADOR</b>.
+</p>
+
+<p class="paragraph">
+    <b>9.6</b>. <b>Danos ao imóvel</b> - O <b>LOCATÁRIO</b> será responsável pelos danos causados ao imóvel e aos
+    vizinhos pelo mau uso do imóvel ora locado, não se prejudicando, durante os respectivos reparos, a
+    continuidade deste contrato, em todos os seus efeitos.
+</p>
+
+<p class="subtitle">
+    <b>10. RESCISÃO</b>
+</p>
+
+<p class="paragraph">
+    <b>10.1</b>. A rescisão desta locação ocorrerá somente por escrito, após o prazo final, item 3.4, com a entrega
+    das chaves pelo <b>LOCATÁRIO</b> e o <b>LOCADOR</b>, e o cumprimento das cláusulas contratuais. Em especial
+    as que dizem respeito a ENTREGA DO IMÓVEL.
+</p>
+
+<p class="paragraph">
+    10.2. Aviso prévio de 30 dias conforme, (Art. 6° da Lei n° 8.245, de 18 de Outubro de 1991, lei do
+    Inquilinato), para rescindir a locação o <b>LOCATÁRIO</b> deverá comunicar sua intenção por escrito ao
+    <b>LOCADOR</b>, com antecedência mínima de 30 (trinta) dias. Caso a <b>LOCADOR</b> não seja comunicado com
+    a antecedência mínima estabelecida o <b>LOCATÁRIO</b> estará obrigado a realizar o pagamento
+    correspondente a 01 (um) mês de aluguel e acessórios, sem prejuízo das demais cláusulas e
+    condições pactuadas para o recebimento do imóvel locado. Da mesma forma, o <b>LOCADOR</b> deverá
+    comunicar a intenção da rescisão do contrato, por escrito ao <b>LOCATÁRIO</b>, com antecedência mínima
+    de 30 (trinta) dias. Caso a <b>LOCATÁRIO</b> não seja comunicado com a antecedência mínima estabelecida
+    o <b>LOCADOR</b> estará obrigado a realizar o pagamento correspondente a 01 (um) mês de aluguel e
+    acessórios, sem prejuízo para o <b>LOCADOR</b> e das demais cláusulas e condições pactuadas para o
+    recebimento do imóvel locado.
+</p>
+
+<p class="paragraph">
+    <b>10.3</b>. Multa Contratual ficam acertada entre as partes que, se o <b>LOCATÁRIO</b> devolver o imóvel antes do
+    período de 12 (doze) meses, o mesmo estará obrigado ao pagamento de multa equivalente ao período
+    de cumprimento do contrato (Art. 4° e § 2 do art. 54-A da Lei n° 8.245, de 18 de Outubro de 1991, lei
+    do Inquilinato), facultado ao <b>LOCADOR(A)</b> abater da garantia CAUCÃO, que se resolve, sem prejuízo das
+    demais cláusulas e condições pactuadas para o recebimento do imóvel locado.
+</p>
+
+<p class="paragraph">
+    <b>10.4</b>. O <b>LOCATÁRIO</b> deverá permitir que o imóvel seja visitado por pretensos inquilinos, nos 30 (trinta)
+    dias anteriores a desocupação do imóvel; cuja visitação deverá ocorrer em horário comercial, de
+    segunda a sexta-feira, das 08h30min ao 12h00min e de 14h30min as 18h00min. 
+    Todas as visitas deverão ser previamente autorizadas pelo <b>LOCATÁRIO</b>.
+</p>
+
+<p class="paragraph">
+    <b>10.5</b>. Desapropriação, em caso de desapropriação do imóvel, o presente contrato ficará
+    automaticamente rescindido, ressalvando-se somente o direito da parte lesada de pleitear e receber
+    indenização do Poder Público pelos danos decorrentes da rescisão.
+</p>
+
+<p class="paragraph">
+    <b>10.6</b>. Venda, o presente imóvel poderá ser vendido, antes dos primeiros 12 (doze meses), desde que
+    obdecido o direito do <b>LOCATÁRIO</b> de preferência e respeitadas às disposições legais. Neste caso, o
+    <b>LOCATÁRIO</b> deverá permitir a visitação do imóvel, constituindo falta grave, sujeita a rescisão
+    contratual antecipada, caso este direito não seja atendido.
+</p>
+
+<p class="subtitle">
+    <b>11. ENTREGA DO IMÓVEL</b>
+</p>
+
+<p class="paragraph">
+    <b>11.1</b>.Vistoria de saída do imóvel, O <b>LOCATÁRIO</b> deverá solicitar as vistorias com o prazo mínimo de 30
+    (trinta) dias úteis, para que haja tempo hábil para os seus agendamentos. No mínimo, serão
+    realizadas 02 (duas) vistorias de saída, uma prévia, com o objetivo de antecipar a solução de parte
+    dos possíveis problemas, e outra ao final do contrato, quando uma nova vistoria deverá ser realizada,
+    podendo inclusive ser efetuadas novas solicitações, sempre de acordo com o Termo de Vistoria em
+    Anexo. Na ocasião da última vistoria, o imóvel deverá estar totalmente desocupado de pessoas e
+    coisas. Neste momento, as reformas e reparos que porventura sejam necessários já deverão ter sido
+    realizados. O <b>LOCATÁRIO</b> estará obrigado a pagar pelo aluguel e acessórios correspondentes aos
+    dias que o imóvel ficar indisponível aguardando a completa realização dos reparos e reformas
+    necessárias ao cumprimento das cláusulas contratuais estabelecidas, mesmo que o imóvel tenha
+    sido desocupado. O imóvel deverá ser entregue com tintas na mesma qualidade e cores das
+    encontradas, interna e externamente, bem como seus itens segundo o Termo de Vistoria em Anexo,
+    e demais itens no mesmo estado de conservação presente na vistoria de entrada do imóvel e com as
+    instalações elétricas e hidráulicas em perfeito estado de funcionamento, respeitando a Lei 8.245 de
+    18 de Outubro de 1991.
+</p>
+
+<p class="paragraph">
+    <b>11.2</b>. Comprovantes, o <b>LOCATÁRIO</b> deverá apresentar o comprovante de corte e pagamento do
+    consumo final de Energia Elétrica no momento da entrega das chaves. Mediante recibo, o
+    <b>LOCATÁRIO</b> deverá entregar a <b>LOCADORA</b>, ao final da locação, ou sempre que solicitado, os
+    comprovantes quitados de consumo de água, energia elétrica, condomínio, IPTU, e demais
+    acessórios correspondentes ao período de sua locação no momento da comunicação da sua
+    intenção de entregar o imóvel.
+</p>
+
+<p class="subtitle">
+    <b>12. SANÇÕES</b>
+</p>
+
+<p class="paragraph">
+    Ao inadimplemento total ou parcial de qualquer das obrigações deste contrato por ambas as partes,
+    serão aplicadas cumulativamente ou alternativamente, as seguintes sanções:
+</p>
+
+<p class="paragraph">
+    a) Em se tratando de falta grave, rescisão automática, independentemente de interpelação judicial ou
+    extrajudicial, não significando a tolerância de qualquer infração como renúncia deste direito, caso a
+    mesma se repita ou se prolongue;
+</p>
+
+<p class="paragraph">
+    b) Multa penal igual ao valor do dano, se tratar de má conservação do imóvel e suas benfeitorias;
+</p>
+
+<p class="paragraph">
+    c) Pagamentos dos honorários judiciais dos advogados desde já fixado em 20% (vinte por cento),
+    respeitando o disposto na
+    Lei do Inquilinato 8.245 de 18 de Outubro de 1991, mais os encargos com custas judiciais e os efeitos
+    da sucumbencia.
+</p>
+
+<p class="subtitle">
+    <b>13. GARANTIA DE CAUÇÃO</b>
+</p>
+
+<p class="subtitle">
+    14. No ato da assinatura deste contrato, para que o mesmo se implemente validamente, e gerem direito
+    de uso, para servir de garantia de valores por inadimplência, na reposição de prejuízos, danos e
+    reparos, o LOCATÁRIO no ato da presente contratação, a título de caução depositará o valor de
+    R$<b><%= valorGarantiaCaucao %></b>, equivalente ao caução na conta corrente da proprietaria descrita no
+    item 2.2 deste contrato.
+</p>
+<br>
+<p class="paragraph">
+    E por estarem justos e contratados, assinam o presente contrato em 02 vias, com duas (02) testemunhas,
+    elegendo o Foro da Comarca de <b><%= cidadeLocatario %></b>, para toda e qualquer ação oriunda deste instrumento,
+    renunciando qualquer outro por mais privilegiado que venha a ser. <br><br> <b>DE ACORDO</b>,
+</p>
+
+<p class="paragraph">
+    <b><%= cidadeLocatario %></b>, <b><%= date %></b> 
+</p>
+
+<br>
+<br>
+<br>
+
+<div id="assinaturas">
+    <hr>
+    <b><%= locador %></b><br>
+    <b><%= cpfLocador %></b><br>
+    <b>Locador(a)</b><br>
+
+    <br>
+    <br>
+    <br>
+
+    <hr>
+    <b><%= locatario %></b><br>
+    <b><%= cpfLocatario %></b><br>
+    <b>Locatário(a)</b><br>
+</div>
+
+</div>
