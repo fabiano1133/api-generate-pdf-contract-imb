@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { GeneratePdfUseCase } from "./GeneratePdfUseCase";
 
+
 export class GeneratePdfController {
     async handle(req: Request, res: Response): Promise<Response> {
         

@@ -1,5 +1,7 @@
-import { PdfProvider } from "../../../utils/pdfProvider/PdfProvider";
+
+import { PdfProvider } from "@utils/pdfProvider/PdfProvider";
 import { ContractDataDTO } from "../dtos/ContractDataDTO";
+
 
 export class GeneratePdfUseCase {
     async execute({
