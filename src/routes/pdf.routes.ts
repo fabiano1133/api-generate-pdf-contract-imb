@@ -9,7 +9,7 @@ const generatePdfController = new GeneratePdfController();
 pdfRouter.post('/pdf', generatePdfController.handle);
 
 pdfRouter.get('/', (request, response) => {
-    const message = 'Olá, sou uma API Externa';
+    const message = 'Api is running';
 
     return response.json({ message });
 })
