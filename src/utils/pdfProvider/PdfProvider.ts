@@ -1,9 +1,12 @@
 import { ContractDataDTO } from "../../domain/pdf/dtos/ContractDataDTO";
 import { dateProvider } from "../dateProvider/dateProvider";
+let ejs = require("ejs");
+let path = require("path");
+let pdf = require("html-pdf");
 import { uploadProvider } from "../uploadProvider/uploadProvider";
-import jsPDF from "jspdf";
+//import jsPDF from "jspdf";
  
-const pdfMaker = require("pdf-maker");
+//const pdfMaker = require("pdf-maker");
 
 export class PdfProvider {
     async generate({
@@ -165,22 +168,35 @@ export class PdfProvider {
             date: dateProvider.date
         }
 
-        const doc = new jsPDF()
-
         const pdfPath = `${process.env.PDF_PATH}`;
+        
+        ejs.renderFile(path.join(pathTemplate), data, (err: any, result: any) => {
+            if(err) {
+                throw new Error(err);
+            }
+            const options = {
+                "format": "A4",
+                "height": "11.25in",
+                "width": "8.5in",
+                "header": {
+                "height": "15mm"
+                },
+                "footer": {
+                "height": "15mm",
+                },
+            };
+            pdf.create(result, options).toFile(path.join(__dirname, process.env.PDF_PATH), (err: any, res: any) => {
+                if(err) {
+                    throw new Error(err);
+                }
+                console.log("PDF GERADO COM SUCESSO!");
+            })
+        })
 
-        const options = {
-            paperSize: {
-                format: 'A4',
-                orientation: 'portrait',
-                border: '1cm'
-            } 
-        }
-
-        await pdfMaker(pathTemplate, data, pdfPath, options);
 
         const fileUpload = await uploadProvider(pdfPath);
 
+        
         return fileUpload;
     }
 }
