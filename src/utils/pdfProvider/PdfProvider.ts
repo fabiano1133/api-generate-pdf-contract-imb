@@ -1,9 +1,7 @@
 import { ContractDataDTO } from "../../domain/pdf/dtos/ContractDataDTO";
 import { dateProvider } from "../dateProvider/dateProvider";
-import { v4 as uuidV4 } from "uuid"
-import fs from "fs"
-import { S3 } from "aws-sdk";
 import { uploadProvider } from "../uploadProvider/uploadProvider";
+import jsPDF from "jspdf";
  
 const pdfMaker = require("pdf-maker");
 
@@ -86,7 +84,7 @@ export class PdfProvider {
             titularConta,
             date,
     }: ContractDataDTO): Promise<any> {
-        const templatePath = process.env.TEMPLATE_PATH;
+        const pathTemplate = process.env.TEMPLATE_PATH;
 
         const data = {
             valorMensalAluguelEscrito,
@@ -167,6 +165,8 @@ export class PdfProvider {
             date: dateProvider.date
         }
 
+        const doc = new jsPDF()
+
         const pdfPath = `${process.env.PDF_PATH}`;
 
         const options = {
@@ -177,7 +177,7 @@ export class PdfProvider {
             } 
         }
 
-        await pdfMaker(templatePath, data, pdfPath, options);
+        await pdfMaker(pathTemplate, data, pdfPath, options);
 
         const fileUpload = await uploadProvider(pdfPath);
 
