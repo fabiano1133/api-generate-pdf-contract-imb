@@ -192,7 +192,7 @@ export class PdfProvider {
             return uploadPDF;
         
         } catch (error) {
-            throw new Error("Erro ao gerar PDF");
+            console.log(error);
         }
     }
 }
