@@ -19,7 +19,7 @@ export async function uploadProvider(filePath: string): Promise<any> {
             secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
         });
 
-       const file = await s3.upload(params, async (err: any, data: any) => {
+       const file = await s3.upload(params, (err: any, data: any) => {
             if (err) {
                 return err;
             } else {

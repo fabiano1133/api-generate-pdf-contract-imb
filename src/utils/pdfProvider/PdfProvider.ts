@@ -1,13 +1,10 @@
 import { ContractDataDTO } from "../../domain/pdf/dtos/ContractDataDTO";
 import { dateProvider } from "../dateProvider/dateProvider";
+import puppeteer, { Page } from "puppeteer";
+import { uploadProvider } from "../uploadProvider/uploadProvider";
+
 let ejs = require("ejs");
 let path = require("path");
-let pdf = require("html-pdf");
-import { uploadProvider } from "../uploadProvider/uploadProvider";
-//import jsPDF from "jspdf";
- 
-//const pdfMaker = require("pdf-maker");
-
 export class PdfProvider {
     async generate({
             valorMensalAluguelEscrito,
@@ -86,8 +83,11 @@ export class PdfProvider {
             contaLocador,
             titularConta,
             date,
-    }: ContractDataDTO): Promise<any> {
+        }: ContractDataDTO): Promise<any> {
+
         const pathTemplate = process.env.TEMPLATE_PATH;
+            
+        const pdfPath = `${process.env.PDF_PATH}`;
 
         const data = {
             valorMensalAluguelEscrito,
@@ -167,36 +167,35 @@ export class PdfProvider {
             titularConta,
             date: dateProvider.date
         }
-
-        const pdfPath = `${process.env.PDF_PATH}`;
         
-        ejs.renderFile(path.join(pathTemplate), data, (err: any, result: any) => {
-            if(err) {
-                throw new Error(err);
-            }
-            const options = {
-                "format": "A4",
-                "height": "11.25in",
-                "width": "8.5in",
-                "header": {
-                "height": "15mm"
-                },
-                "footer": {
-                "height": "15mm",
-                },
-            };
-            pdf.create(result, options).toFile(path.join(__dirname, process.env.PDF_PATH), (err: any, res: any) => {
-                if(err) {
-                    throw new Error(err);
+        
+        const pdf = await ejs.renderFile(path.join(pathTemplate), data)
+
+        try {
+            const browser = await puppeteer.launch();
+
+            const page = await browser.newPage();
+
+            await page.setContent(pdf);
+
+            await page.pdf({
+                path: pdfPath,
+                format: 'A4',
+                margin: {
+                    top: '1.5cm',
+                    bottom: '1.5cm',
                 }
-                console.log("PDF GERADO COM SUCESSO!");
-            })
-        })
+            });
 
-
-        const fileUpload = await uploadProvider(pdfPath);
-
+            const uploadPDF = await uploadProvider(pdfPath);
+            console.log("PDF gerado com sucesso!");
+            return uploadPDF;
         
-        return fileUpload;
+        } catch (error) {
+            throw new Error("Erro ao gerar PDF");
+        }
     }
 }
+
+
+
