@@ -87,7 +87,7 @@ export class PdfProvider {
 
         const pathTemplate = process.env.TEMPLATE_PATH;
             
-        const pdfPath = `${process.env.PDF_PATH}`;
+        const pdfPath = `./src/domain/pdf/views/contrato-locacao.pdf`;
 
         const data = {
             valorMensalAluguelEscrito,
@@ -169,7 +169,7 @@ export class PdfProvider {
         }
         
         
-        const pdf = await ejs.renderFile(path.join(pathTemplate), data)
+        const pdf = await ejs.renderFile(path.join("./src/domain/pdf/views/pdf-generated.ejs"), data)
 
         try {
             const browser = await puppeteer.launch();
