@@ -173,7 +173,7 @@ export class PdfProvider {
 
         try {
             const browser = await puppeteer.launch({
-                executablePath: '/usr/bin/chromium-browser'
+                //executablePath: '/usr/bin/chromium-browser'
             });
 
             const page = await browser.newPage();
@@ -184,8 +184,10 @@ export class PdfProvider {
                 path: pdfPath,
                 format: 'A4',
                 margin: {
-                    top: '1.5cm',
-                    bottom: '1.5cm',
+                    top: '60px',
+                    bottom: '20px',
+                    left: '40px',
+                    right: '40px'
                 }
             });
 
