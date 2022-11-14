@@ -1,0 +1,442 @@
+<style>
+    .title { 
+       font-size: 14px;
+       text-align: center;
+       font-family: Verdana, Geneva, Tahoma, sans-serif
+    }
+    .subtitle {
+        font-size: 12px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: justify
+    }
+
+    .paragraph {
+        font-size: 12px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: justify;
+        line-height: 16px;;
+    }
+    #container {
+        margin: 30px;
+    }
+
+    #assinaturas {
+        font-size: 12px;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    table {
+        border: ¨#000, solid, 1px;
+        width: 100%;
+        margin-bottom : .5em;
+        padding: 3px;
+        font-size: 14px;
+        border-collapse: collapse;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    td {
+        padding: 3px;
+    }
+
+    b {
+        text-transform: uppercase;
+    }
+
+</style>
+
+<div id="container">
+<h1 class="title">CONTRATO DE LOCAÇÃO RESIDENCIAL COM FIADOR</h1>
+<br>
+<p class="paragraph">
+    <b>CONTRATO COM FIADOR QUADRO RESUMO</b>
+    <br>
+    <br>
+    LOCADOR (A): <b><%= nomeLocador %></b>
+    <br>
+    <br>
+    LOCATÁRIO (A): <b><%= nomeLocatario %></b>
+    <br>
+    <br>
+    FIADOR (A): <b><%= fiador %></b>
+    <br>
+    <br>
+    IMÓVEL: <b><%= descricaoImovel %></b>
+    <br>
+    <br>
+    VALOR DO ALUGUEL: R$ <b><%= valorAluguel %>,00</b>
+    <br>
+    <br>
+    PRAZO DA LOCAÇÃO: <b><%= prazoLocacao %></b> MESES
+    <br>
+    <br>
+    DATA INICIAL: <b><%= dataInicio %></b> 
+    <br>
+    <br>
+    DATA FINAL: <b><%= dataFim %></b>
+</p>
+<h2 class="subtitle">DADOS DO CONTRATO DE LOCAÇÃO</h2>
+<p class="paragraph">
+    Pelo presente Instrumento de Locação para Fins <b><%= finalidadeLocacao %></b> do imóvel situado 
+    à <b><%= logradouroImovel %></b>, <b><%= numeroImovel %></b> - <b><%= complementoImovel %></b> - CEP: <b><%= cepImovel %></b> - <b><%= bairroImovel %></b> - <b><%= cidadeImovel %></b> - <b><%= ufImovel %></b> 
+    pelas partes adiante nomeadas e qualificadas, a saber:
+</p>
+<p class="paragraph"><b>DAS PARTES CONTRATANTES</b></p>
+<p class="paragraph">
+    De um lado, na qualidade de LOCADOR (A): <b><%= nomeLocador %></b>,  de nacionalidade <b><%= nacionalidadeLocador %></b>, <b><%= estadoCivilLocador %></b>, 
+    <b><%= ocupacaoLocador %></b>, portador (a) da cédula de identidade RG: <b><%= rgLocador %></b> <b><%= orgaoExpedidorLocador %></b>/<b><%= ufExpedidorLocador %></b>, 
+    inscrito (a) no CPF sob nº <b><%= cpfLocador %></b>, residente e domiciliado (a), nesta data, à <b><%= logradouroLocador %></b>, <b><%= numeroLocador %></b> - <b><%= complementoLocador %></b> - <b><%= bairroLocador %></b> - CEP: <b><%= cepLocador %></b> - <b><%= cidadeLocador %></b> - <b><%= ufLocador %></b>.
+</p>
+
+<p class="paragraph">
+    E como LOCATÁRIO (A): <b><%= nomeLocatario %></b>, de nacionalidade <b><%= nacionalidadeLocatario %></b>, 
+    <b><%= estadoCivilLocatario %></b>, <b><%= ocupacaoLocatario %></b>, portadora da cédula de identidade RG <b><%= rgLocatario %></b> <b><%= orgaoExpedidorLocatario %></b>/<b><%= ufExpedidorLocatario %></b> 
+    inscrito (a) no CPF sob nº <b><%= cpfLocatario %></b>, residente e domiciliado, nesta data, 
+    à <b><%= logradouroLocatario %></b>, <b><%= numeroLocatario %></b>, <b><%= complementoLocatario %></b> - CEP: <b><%= cepLocatario %></b>, <b><%= bairroLocatario %></b> - <b><%= cidadeLocatario %></b> - <b><%= ufLocatario %></b>.
+</p>
+
+<p class="paragraph"><b>DA DESTINAÇÃO DO IMÓVEL</b></p>
+<p class="paragraph">
+    O imóvel objeto deste instrumento é locado exclusivamente para finalidade 
+    <b><%= finalidadeLocacao %></b> ao (à) LOCATÁRIO (A), não podendo sua destinação ser alterada, 
+    substituída ou acrescida de qualquer outra, sem prévia e expressa anuência 
+    do (a) LOCADOR (A). Fica vedado, outrossim, a sub-locação, 
+    cessão ou transferência deste contrato, bem como o empréstimo, parcial ou 
+    total do imóvel locado, que dependerão também, de prévia e 
+    expressa anuência do (a) LOCADOR (A).
+</p>
+
+<p class="paragraph"><b>DO PRAZO DA LOCAÇÃO</b></p>
+<p class="paragraph">
+    O prazo da locação é de <b><%= prazoLocacao %></b> meses, iniciando-se no dia <b><%= dataInicio %></b> e 
+    findando-se em  <b><%= dataFim %></b>, quando então será considerada finda, 
+    independentemente de notificação judicial ou extrajudicial, 
+    obrigando-se o (a) LOCATÁRIO (A) a restituir o imóvel, completamente livre e desocupado.
+</p>
+
+<p class="paragraph"><b>DO ALUGUEL</b></p>
+<p class="paragraph">
+    O valor do aluguel mensal, livremente acordado entre as partes, 
+    inicialmente, é de R$ <b><%= valorAluguel %></b>,00 (<b><%= valorAluguelEscrito %></b>), 
+    incluso os valores de CONDOMÍNIO E IPTU. O valor do aluguel 
+    será corrigido ANUALMENTE, sucessiva e cumulativamente, pelos 
+    índices da variação do IGPM, ou qualquer outro que venha a sucedê-lo.
+</p>
+
+<p class="paragraph">
+    O aluguel estipulado deverá ser pago pelo (a) LOCATÁRIO (A) até o 
+    quinto dia útil de cada mês seguinte ao vencido diretamente ao LOCADOR 
+    independentemente de qualquer aviso ou comunicação de vencimento ou 
+    cobrança na seguinte conta: <b><%= bancoLocador %></b>, AG: <b><%= agenciaLocador %></b>, CONTA: <b><%= contaLocador %></b>, 
+    CHAVE PIX: <b><%= chavePixLocador %></b>. O comprovante deverá ser enviado para o e-mail: <b><%= emailLocador %></b>.
+</p>
+
+<p class="paragraph">
+    Não ocorrendo o pagamento do aluguel na data aprazada, estará sujeito o 
+    (a) LOCATÁRIO (A) a multa de 10,00% (dez por cento) após o vencimento, 
+    mais juros de mora de 1,00% (um por cento) ao mês sobre todo débito, 
+    incluído, aí, todas as despesas necessárias na efetivação da respectiva cobrança.
+</p>
+
+<p class="paragraph">
+    Corretor (a)/ intermediador (a) : <b><%= nomeCorretor %></b>, <b><%= nacionalidadeCorretor %></b>, 
+    <b><%= estadoCivilCorretor %></b>, inscrito (a) no CPF n° <b><%= cpfCorretor %></b>, 
+    portadora da cédula de identidade nº <b><%= rgCorretor %></b> <b><%= orgaoExpedidorCorretor %></b>/<b><%= ufExpedidorCorretor %></b> CRECI n º <b><%= creciCorretor %></b>. 
+    Residente e domiciliado (a) à <b><%= logradouroCorretor %></b>, <b><%= numeroCorretor %></b>, <b><%= bairroCorretor %></b>, 
+    <b><%= cidadeCorretor %></b> - <b><%= ufCorretor %></b> CEP: <b><%= cepCorretor %></b>. Neste ato como intermediador (a) da locação. 
+    Para isto serão devidos pelo locador a quantia de R$ <b><%= honorariosCorretor %></b> no ato da 
+    assinatura deste em conta com os seguites dados bancários: <b><%= bancoCorretor %></b> -  AG: <b><%= agenciaCorretor %></b> - CONTA: <b><%= contaCorretor %></b>, 
+    via PIX nesta chave <b><%= chavePixCorretor %></b>.
+</p>
+
+<p class="paragraph"><b>DA CORREÇÃO DO ALUGUEL</b></p>
+<p class="paragraph">
+    A correção do aluguel convencionada no item 3 será sempre automática, independendo de aviso ou comunicação.
+</p>
+
+<p class="paragraph"><b>ENCARGOS LOCATÍCIOS</b></p>
+<p class="paragraph">
+    A correção do aluguel convencionada no item 3 será sempre automática, independendo de aviso ou comunicação.
+</p>
+<p class="paragraph">
+    Ficará a cargo do (a) LOCATÁRIO (A), integralmente, mesmo quando lançados em nome do (a) LOCADOR (A), os seguintes pagamentos:
+</p>
+<p class="paragraph">
+    O consumo de energia elétrica da unidade locada e quaisquer outras  utilidades, que os pagará diretamente ao fornecedor ou por reembolso;
+</p>
+<p class="paragraph">
+    A taxa do correio de envio de qualquer documento atinente ao presente contrato;
+</p>
+<p class="paragraph">
+    Havendo gás canalizado, o seu consumo, que deverá ser pago diretamente ao (à) LOCADOR (A), diretamente em conta bancária descrita no item 3.1
+</p>
+
+<p class="paragraph">
+    A transferência da conta de consumo de energia elétrica 
+    junto ao órgão fornecedor ficará a cargo do (a) LOCATÁRIO (A), 
+    sendo todo custo e trâmite burocrático de sua responsabilidade, 
+    sob pena de, não o fazendo, incorrer em infração contratual. 
+    Conta Contrato de Nº <b><%= contaContrato %></b>.
+</p>
+
+<p class="paragraph">
+    O (A) LOCATÁRIO (A) se declara ciente que o imóvel possui 
+    instalação elétrica em condições normais de uso. 
+    O acréscimo de equipamentos elétricos que necessitem de novo 
+    dimensionamento de fiação deverá correr por conta do (a) LOCATÁRIO (A).
+</p>
+
+<p class="paragraph">
+    Findo o contrato e desocupado o imóvel, o (a) LOCATÁRIO (A) se obriga, 
+    no ato da entrega das chaves, a exibir comprovante de quitação das 
+    despesas mencionadas nesta cláusula e, se até o ato da entrega não 
+    tiver recebido aviso para pagamento, deverá oferecer a título de caução, 
+    a quantia correspondente aos últimos pagamentos efetuados referentes a cada despesas.
+</p>
+
+<p class="paragraph"><b>DO USO E DAS BENFEITORIAS</b></p>
+<p class="paragraph">
+    O imóvel foi entregue e aceito como o termo de vistoria informa. 
+    Este imóvel é destinado exclusivamente para fins residenciais e, 
+    tendo este contrato caráter personalíssimo, fica o (a) LOCATÁRIO (A) proibido, 
+    sem prévia e expressa autorização do (a) LOCADOR (A), 
+    que se reserva ao direito de negá-la sem qualquer justificação, de:
+</p>
+<p class="paragraph">
+    Usá-lo para qualquer outro fim;
+</p>
+<p class="paragraph">
+    Sublocá-lo, transferi-lo ou cedê-lo, no todo ou em parte, mesmo em comodato;
+</p>
+<p class="paragraph">
+    Fazer nele modificações ou obras, ainda que úteis ou necessária;
+</p>
+<p class="paragraph">
+    É expressamente proibido ao (à) LOCATÁRIO (A) manter no imóvel, 
+    mesmo em caráter temporário, a guarda ou depósito de explosivos ou inflamáveis, 
+    bem como botijões de gás para a hipótese de haver, no local, instalação de gás canalizado.
+</p>
+<p class="paragraph">
+    Quaisquer modificações ou benfeitorias, sejam elas úteis, 
+    necessárias ou voluntárias, efetuadas pelo (a) LOCATÁRIO (A) 
+    com expressa anuência do (a) LOCADOR (A), ficarão desde 
+    logo incorporadas ao imóvel, sem qualquer direito ao (à) LOCATÁRIO (A) 
+    de reter o imóvel locado, nem de pretender haver do (a) LOCADOR (A) 
+    qualquer reembolso, indenização ou compensação, ainda que tenha 
+    realizado tais benfeitorias de boa-fé, renunciando expressamente o 
+    disposto na parte final do art. 1.255 do Código Civil.
+</p>
+<p class="paragraph">
+    Todavia, fica acordado que as obras que importarem na segurança 
+    estrutural do imóvel serão de responsabilidade do (a) LOCADOR (A).
+</p>
+<p class="paragraph">
+    Qualquer benfeitoria realizada sem expressa autorização do (a) 
+    LOCADOR (A) ou seu procurador será considerada de má-fé, 
+    sendo obrigação do LOCATÁRIO (A) recompor o imóvel ao estado anterior.
+</p>
+<p class="paragraph">
+    Fica a Locatário ciente do desejo do locador em venda do imóvel, 
+    se dispondo a apresenta-lo em dias estipulados entre as partes, para visitação do mesmo.
+</p>
+
+<p class="paragraph"><b>DO VENCIMENTO DO CONTRATO</b></p>
+<p class="paragraph">
+    Findo o contrato na data aprazada na cláusula 2, 
+    respeitado o disposto no art. 4º da Lei 8.245/91, 
+    obriga-se o (a) LOCATÁRIO (A) a restituir o 
+    imóvel completamente desocupado e em perfeito 
+    estado de conservação, funcionamento e limpeza, 
+    sem qualquer ônus ao LOCADOR (A), tal como neste ato reconhece havê-lo recebido.
+</p>
+<p class="paragraph">
+    Findo o prazo da locação, permanecendo o (a) LOCATÁRIO (A) no imóvel por 
+    mais de 30 (trinta) dias, sem oposição do (a) LOCADOR (A), presumir-se-á 
+    prorrogada a locação pelo prazo de 12 meses e assim sucessivamente, 
+    sendo mantidas todas as cláusulas e condições deste contrato, 
+    que subsistirá aos (às) LOCATÁRIO (A) s e fiadores até a efetiva devolução das chaves.
+</p>
+
+<p class="paragraph"><b>CONSERVAÇÃO E MANUTENÇÃO</b></p>
+<p class="paragraph">
+    O (A) LOCATÁRIO (A) obriga-se a manter o imóvel locado em perfeito 
+    estado de conservação e asseio, trazendo-o sempre em condições de 
+    higiene e limpeza, com os acessórios, partes hidráulicas e elétricas
+    em perfeito estado de funcionamento, com pintura recente como 
+    declara neste ato receber, conforme laudo de vistoria em anexo, 
+    comprometendo-se ainda a fazer às suas expensas, sem ônus atual ou 
+    futuro para o (a) LOCADOR (A), a pintura do imóvel e os reparos imediatos 
+    originários do uso, quer seja pela má conservação, quer seja pelo desgaste ou pelo abandono.
+</p>
+
+<p class="paragraph"><b>DEVOLUÇÃO DO IMÓVEL</b></p>
+<p class="paragraph">
+    Finda ou rescindida a presente locação, o (a) LOCADOR (A) 
+    mandará proceder vistoria, após comunicação por escrito o LOCATÁRIO, 
+    a fim de verificar se o imóvel está nas mesmas condições em que foi locado, 
+    conforme laudo de vistoria em anexo, ficando o (a) LOCATÁRIO (A) obrigado às 
+    indenizações pelos estragos que forem constatados, inclusive a renovação geral da 
+    pintura do imóvel, com utilização das tintas nas cores e marcas definidas pelo (a) LOCADOR (A).
+</p>
+
+<p class="paragraph"><b>DAS RESTITUIÇÕES DAS CHAVES</b></p>
+<p class="paragraph">
+    Fica convencionado que a restituição das chaves ao (à) LOCADOR (A) 
+    somente será aceita se o imóvel estiver nas mesmas condições em que foi locado, 
+    isto é, com os acessórios, partes hidráulicas, elétricas e sanitárias funcionando, devidamente pintado.
+</p>
+<p class="paragraph">
+    Caso haja necessidade de execução de obras, somente após terminadas 
+    é que as chaves serão aceitas pelo (a) LOCADOR (A), obrigando-se o (a) 
+    LOCATÁRIO (A), neste caso, pelo pagamento dos aluguéis e encargos devidos 
+    como se o imóvel ainda estivesse ocupado, ficando acertado que se a 
+    devolução se proceder de forma diversa do aqui pactuado, fica o (a) 
+    LOCADOR (A) autorizado a executar as obras e reparos que se fizerem necessários, 
+    independentemente de vistoria prévia, cobrando o custo executivamente do (a) LOCATÁRIO (A) 
+    mediante simples recibo de execução de tais obras ou reparos.
+</p>
+<p class="paragraph">
+    Após desocupado o imóvel, terá o (a) LOCATÁRIO (A) o prazo de até 30 (trinta) 
+    dias para a execução das obras que se fizerem necessárias à entrega, ficando 
+    ajustado que vencido este prazo estará automaticamente o (a) LOCADOR (A) 
+    autorizado a promovê-la como cobrança do montante e demais despesas finais da locação o (a) LOCATÁRIO (A).
+</p>
+
+<p class="paragraph"><b>DESAPROPRIAÇÃO</b></p>
+<p class="paragraph">
+    Em caso de desapropriação do imóvel locado, ficará o (a) LOCADOR (A) 
+    exonerado de todas as obrigações assumidas neste contrato, 
+    ressalvado ao (à) LOCATÁRIO (A) a faculdade de haver do poder 
+    expropriante a indenização que se julgar de direito.
+</p>
+
+<p class="paragraph"><b>INCÊNDIO E OUTROS EVENTOS</b></p>
+<p class="paragraph">
+    É de responsabilidade do (a) LOCATÁRIO (A) a contratação do seguro 
+    contra incêndio em nome do (a) LOCADOR (A), não sendo este responsável 
+    por quaisquer danos às pessoas e coisas materiais do (a) LOCATÁRIO (A) e 
+    terceiros, mesmo os decorrentes de caso fortuito ou força maior.
+</p>
+
+<p class="paragraph"><b>MULTAS</b></p>
+<p class="paragraph">
+    As partes estipulam a multa de 1 ( um ) vezes o valor do aluguel 
+    vigente na data da infração para a parte que infringir qualquer 
+    cláusula ou condição deste instrumento, sem prejuízo da obrigação 
+    principal, das despesas judiciais e os honorários advocatícios no percentual de 20% 
+    (vinte) por cento, calculados sobre o valor da causa.
+</p>
+<p class="paragraph">
+    Sem prejuízo da multa contratual aplicada à espécie, verificada a infração, considera-se rescindido o presente instrumento.
+</p>
+<p class="paragraph">
+    Em caso de rescisão antecipada, a multa prevista na cláusula 13 
+    será paga de forma proporcional ao período de cumprimento do contrato, 
+    respeitado o disposto no caput do art. 4º da Lei 8.245/91.
+</p>
+<p class="paragraph">
+    Incorre em infração contratual, sujeitando-se a todas as sanções 
+    previstas no presente instrumento, o (a) LOCATÁRIO (A) que, 
+    por ação ou omissão, der causa:
+</p>
+<p class="paragraph">
+    Ao descumprimento no disposto na cláusula 3
+</p>
+<p class="paragraph">
+    Pela falta de entrega, incontinente, ao (à) LOCADOR (A) e 
+    consequente perda de prazo, dos avisos-recibos de tributos, 
+    bem como de qualquer aviso, notificação ou cobrança, 
+    a que título for, ainda que não sejam de sua responsabilidade
+</p>
+<p class="paragraph">
+    Às multas por infrações decorrentes da inobservância dos Regimentos Internos e Convenção do Condomínio.
+</p>
+<p class="paragraph">
+    Às multas impostas pelos poderes públicos por todas e quaisquer infrações administrativas a quem tenha dado causa.
+</p>
+<p class="paragraph">
+    A tolerância do (a) LOCADOR (A) em aplicar de imediato as 
+    sanções nas quais estiver sujeito o (a) LOCATÁRIO (A), não o 
+    eximirá de suportá-las após, nem tampouco implicará em Inovação 
+    ou modificação de qualquer das cláusulas e condições deste contrato.
+</p>
+
+<p class="paragraph"><b>DA GARANTIA CONTRATUAL</b></p>
+<p class="paragraph">
+    Como fiador (a) e principal pagador (a) de todas as obrigações que incumbem 
+    ao (a) LOCATÁRIO (A), por força de lei ou do presente contrato até a 
+    efetiva desocupação do imóvel, assim <b><%= fiador %></b>, 
+    de nacionalidade <b><%= nacionalidadeFiador %></b>, <b><%= ocupacaoFiador %></b>, <b><%= estadoCivilFiador %></b>, portador (a) 
+    da cédula de identidade RG <b><%= rgFiador %></b> <b><%= orgaoExpedidorFiador %></b>/<b><%= ufExpedidorFiador %></b>, inscrita no 
+    CPF sob nº <b><%= cpfFiador %></b>, residente e domiciliado (a), 
+    nesta data, à <b><%= logradouroFiador %></b>, <b><%= numeroFiador %></b> - <b><%= complementoFiador %></b> - CEP: <b><%= cepFiador %></b> - <b><%= bairroFiador %></b> - <b><%= cepFiador %></b> - <b><%= ufFiador %></b>.
+</p>
+<p class="paragraph">
+    O (A) FIADOR (A) concorda expressamente em manter a fiança, mesmo se o contrato 
+    viger por prazo indeterminado, e por conseguinte, renunciar ao exercício da 
+    faculdade do artigo 835 do Código Civil, isto é, a exoneração, prevalecendo os 
+    preceitos instituídos no artigo 39 da Lei n. 8.245/91, estendendo-se a garantia 
+    até a efetiva restituição do imóvel (entrega das chaves).
+</p>
+
+<p class="paragraph"><b>DAS DISPOSIÇÕES GERAIS</b></p>
+<p class="paragraph">
+    Caso o locador manifeste vontade de vender o imóvel objeto do presente, 
+    deverá propor por escrito ao locatário que se obrigará a emitir a resposta no prazo  legal.
+</p>
+
+<p class="paragraph"><b>DO FORO</b></p>
+<p class="paragraph">
+    Fica eleito, com renúncia expressa de qualquer outro, 
+    por mais privilegiado que seja, o foro da comarca de <b><%= foroContrato %></b>, 
+    para nele serem dirimidas quaisquer questões ou dúvidas oriundas do presente contrato.
+</p>
+<p class="paragraph">
+    O LOCADOR (A), LOCATÁRIO (A) e FIADOR (A) DECLARAM TER CIÊNCIA 
+    DOS DIREITOS E OBRIGAÇÕES DECORRENTES DO PRESENTE CONTRATO, 
+    CONSTITUINDO ESTE INSTRUMENTO O ACORDO COMPLETO ENTRE AS PARTES. 
+    DECLARAM, AINDA, TER LIDO, COMPREENDIDO E ACEITO TODOS OS TERMOS E 
+    CONDIÇÕES, COMPROMETENDO-SE CUMPRI-LAS INTEGRALMENTE, E QUE EVENTUAIS 
+    ALTERAÇÕES OU NEGOCIAÇÕES QUE ENVOLVAM ASPECTOS OU CONDIÇÕES EXPRESSAS 
+    NESTE CONTRATO APENAS SERÃO VÁLIDAS APÓS FIRMADO ADITIVO CONTRATUAL.
+</p>
+
+<br>
+<br>    
+
+<p class="paragraph">
+    E por estarem assim justas e contratadas, assinam o presente, 
+    em três (03) vias, de igual teor e forma, na presença das 
+    testemunhas retro, para que surta seus legais e jurídicos efeitos, 
+    obrigando-se por si, seus herdeiros e/ou sucessores, 
+    ao fiel cumprimento de todas as suas cláusulas e condições.
+</p>
+
+<p class="paragraph">
+    <b><%= foroContrato %></b> <b><%= date %></b>   
+</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div id="assinaturas">
+    <hr>
+    <b><%= nomeLocador %></b><br>
+    <b><%= cpfLocador %></b><br>
+    <b>Locador(a)</b><br>
+
+    <br>
+    <br>
+    <br>
+
+    <hr>
+    <b><%= nomeLocatario %></b><br>
+    <b><%= cpfLocatario %></b><br>
+    <b>Locatário(a)</b><br>
+</div>
+
+</div>

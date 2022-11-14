@@ -1,14 +1,10 @@
-import { ContractDataDTO } from "../../domain/pdf/dtos/ContractDataDTO";
-import { dateProvider } from "../dateProvider/dateProvider";
-import puppeteer, { Page } from "puppeteer";
-import { uploadProvider } from "../uploadProvider/uploadProvider";
+import { Request, Response } from 'express';
+import { CreateContratoAluguelCaucaoUseCase } from './CreateContratoAluguelCaucaoUseCase';
 
-let ejs = require("ejs");
-let path = require("path");
-export class PdfProvider {
-    async generate({
+export class CreateContratoAluguelCaucaoController {
+    async handle(req: Request, res: Response): Promise<Response> {
+        const {
             valorMensalAluguelEscrito,
-            finalidade,
             locador,
             cpfLocador,
             estadoCivilLocador,
@@ -21,6 +17,7 @@ export class PdfProvider {
             rgLocatario,
             nomeConjuge,
             cpfConjuge,
+            finalidade,
             objContrato,
             endObjeto,
             numObjeto,
@@ -83,15 +80,12 @@ export class PdfProvider {
             contaLocador,
             titularConta,
             date,
-        }: ContractDataDTO): Promise<any> {
+        } = req.body;
 
-        const pathTemplate = process.env.TEMPLATE_PATH;
-            
-        const pdfPath = `./src/domain/pdf/views/contrato-locacao.pdf`;
+        const generatePdfUseCase = new CreateContratoAluguelCaucaoUseCase();
 
-        const data = {
+        const file = await generatePdfUseCase.execute({
             valorMensalAluguelEscrito,
-            finalidade,
             locador,
             cpfLocador,
             estadoCivilLocador,
@@ -104,6 +98,7 @@ export class PdfProvider {
             rgLocatario,
             nomeConjuge,
             cpfConjuge,
+            finalidade,
             objContrato,
             endObjeto,
             numObjeto,
@@ -165,41 +160,9 @@ export class PdfProvider {
             agLocador,
             contaLocador,
             titularConta,
-            date: dateProvider.date
-        }
-        
-        
-        const pdf = await ejs.renderFile(path.join("./src/domain/pdf/views/pdf-generated.ejs"), data)
+            date,
+        });
 
-        try {
-            const browser = await puppeteer.launch({
-                executablePath: '/usr/bin/chromium-browser'
-            });
-
-            const page = await browser.newPage();
-
-            await page.setContent(pdf);
-
-            await page.pdf({
-                path: pdfPath,
-                format: 'A4',
-                margin: {
-                    top: '60px',
-                    bottom: '20px',
-                    left: '40px',
-                    right: '40px'
-                }
-            });
-
-            const uploadPDF = await uploadProvider(pdfPath);
-            console.log("PDF gerado com sucesso!");
-            return uploadPDF;
-        
-        } catch (error) {
-            console.log(error);
-        }
+        return res.json(file);
     }
 }
-
-
-
