@@ -22,7 +22,7 @@ export class PdfProviderFiador {
                 dataLocacaoFiador
             );
             const browser = await puppeteer.launch({
-                // executablePath: '/usr/bin/chromium-browser',
+                executablePath: '/usr/bin/chromium-browser',
             });
 
             const page = await browser.newPage();
@@ -40,8 +40,8 @@ export class PdfProviderFiador {
                 },
             });
             console.log('PDF Gerado fiador');
-            //const uploadPDF = await uploadProvider(pdfPathCaucao);
-            //return uploadPDF;
+            const uploadPDF = await uploadProvider(pdfPathFiador);
+            return uploadPDF;
         } catch (error) {
             console.log(error);
         }

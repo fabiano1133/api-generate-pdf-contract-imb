@@ -22,7 +22,7 @@ export class PdfProviderCaucao {
                 dataLocacaoCaucao
             );
             const browser = await puppeteer.launch({
-                // executablePath: '/usr/bin/chromium-browser',
+                executablePath: '/usr/bin/chromium-browser',
             });
 
             const page = await browser.newPage();
@@ -40,8 +40,8 @@ export class PdfProviderCaucao {
                 },
             });
             console.log('PDF Gerado caucao');
-            //const uploadPDF = await uploadProvider(pdfPathCaucao);
-            //return uploadPDF;
+            const uploadPDF = await uploadProvider(pdfPathCaucao);
+            return uploadPDF;
         } catch (error) {
             console.log(error);
         }
