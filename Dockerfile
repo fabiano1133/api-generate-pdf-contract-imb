@@ -12,22 +12,10 @@ RUN npm run build
 
 FROM node:18-slim AS production
 
-# Instala Chromium e fontes, incluindo Verdana (via ttf-mscorefonts-installer)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        chromium \
-        fonts-ipafont-gothic \
-        fonts-wqy-zenhei \
-        fonts-thai-tlwg \
-        fonts-kacst \
-        fonts-freefont-ttf \
-        fontconfig \
-        ttf-mscorefonts-installer \
-        libxss1 \
-        ca-certificates \
-        wget && \
-    fc-cache -f -v && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get update \
+    && apt-get install -y chromium fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
+      --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
