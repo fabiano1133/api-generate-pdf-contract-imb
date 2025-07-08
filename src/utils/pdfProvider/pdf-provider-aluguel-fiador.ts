@@ -65,7 +65,8 @@ export class PdfProviderFiador {
             const uploadPDF = await uploadProvider(pdfPathFiador);
             return uploadPDF;
         } catch (error) {
-            console.log(error);
+            console.error('Erro ao gerar PDF fiador:', error);
+            throw error;
         }
     }
 }

@@ -65,7 +65,8 @@ export class PdfProviderCaucao {
             const uploadPDF = await uploadProvider(pdfPathCaucao);
             return uploadPDF;
         } catch (error) {
-            console.log(error);
+            console.error('Erro ao gerar PDF caução:', error);
+            throw error;
         }
     }
 }

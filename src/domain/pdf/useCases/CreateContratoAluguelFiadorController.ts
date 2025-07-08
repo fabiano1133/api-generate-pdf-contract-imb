@@ -4,7 +4,8 @@ import { CreateContratoAluguelFiadorUseCase } from './CreateContratoAluguelFiado
 
 export class CreateContratoAluguelFiadorController {
     async handle(req: Request, res: Response): Promise<Response> {
-        const {
+        try {
+            const {
             ufLocatario,
             nomeLocador,
             nomeLocatario,
@@ -185,5 +186,12 @@ export class CreateContratoAluguelFiadorController {
         });
 
         return res.json(pdf);
+        } catch (error) {
+            console.error('Erro no controller de fiador:', error);
+            return res.status(500).json({ 
+                error: 'Erro interno do servidor ao gerar PDF',
+                message: error instanceof Error ? error.message : 'Erro desconhecido'
+            });
+        }
     }
 }
