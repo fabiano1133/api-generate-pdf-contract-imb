@@ -9,7 +9,7 @@ export class PdfProviderCaucao {
     async generate(dataCaucao: ContratoAluguelCaucao): Promise<any> {
         const pathTemplate = process.env.TEMPLATE_PATH;
 
-        const pdfPathCaucao = `./src/domain/pdf/views/aluguel-caucao/contrato-locacao-caucao.pdf`;
+        const pdfPathCaucao = `${pathTemplate}/aluguel-caucao/contrato-locacao-caucao.pdf`;
 
         const dataLocacaoCaucao = dataCaucao as ContratoAluguelCaucao;
         dataCaucao.date = dateProvider.date;
@@ -22,7 +22,27 @@ export class PdfProviderCaucao {
                 dataLocacaoCaucao
             );
             const browser = await puppeteer.launch({
-                executablePath: '/usr/bin/chromium-browser',
+                headless: 'new',
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-gpu',
+                    '--disable-web-security',
+                    '--disable-extensions',
+                    '--no-first-run',
+                    '--disable-default-apps',
+                    '--disable-sync',
+                    '--disable-translate',
+                    '--disable-plugins',
+                    '--disable-background-timer-throttling',
+                    '--disable-renderer-backgrounding',
+                    '--disable-backgrounding-occluded-windows',
+                    '--disable-client-side-phishing-detection',
+                    '--disable-ipc-flooding-protection'
+                ],
+                ignoreHTTPSErrors: true,
+                timeout: 0
             });
 
             const page = await browser.newPage();
@@ -39,11 +59,14 @@ export class PdfProviderCaucao {
                     right: '40px',
                 },
             });
+            
+            await browser.close();
             console.log('PDF Gerado caucao');
             const uploadPDF = await uploadProvider(pdfPathCaucao);
             return uploadPDF;
         } catch (error) {
-            console.log(error);
+            console.error('Erro ao gerar PDF caução:', error);
+            throw error;
         }
     }
 }

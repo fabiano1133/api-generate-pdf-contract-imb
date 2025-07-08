@@ -1,0 +1,65 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3333:3333"
+    environment:
+      - PORT=3333
+      - TEMPLATE_PATH=./src/domain/pdf/views/
+      - AWS_BUCKET_NAME=pdf-contracts
+      - AWS_ACCESS_KEY_ID=minioadmin
+      - AWS_SECRET_ACCESS_KEY=minioadmin
+      - AWS_ENDPOINT=http://minio:9000
+      - AWS_REGION=us-east-1
+    depends_on:
+      - minio
+    volumes:
+      - ./src/domain/pdf/views:/app/src/domain/pdf/views
+    networks:
+      - app-network
+    restart: unless-stopped
+    shm_size: '2gb'
+    cap_add:
+      - SYS_ADMIN
+
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9000:9000"      # API
+      - "9001:9001"      # Console
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  # Serviço para criar bucket automaticamente
+  minio-init:
+    image: minio/mc:latest
+    depends_on:
+      - minio
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        sleep 5
+        until /usr/bin/mc alias set myminio http://minio:9000 minioadmin minioadmin; do
+          echo 'Aguardando MinIO estar pronto...'
+          sleep 1
+        done
+        /usr/bin/mc mb myminio/pdf-contracts
+        /usr/bin/mc anonymous set public myminio/pdf-contracts
+        exit 0
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  minio_data:

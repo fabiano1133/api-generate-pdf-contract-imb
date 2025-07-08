@@ -9,7 +9,7 @@ export class PdfProviderFiador {
     async generate(dataFiador: ContratoAluguelFiador): Promise<any> {
         const pathTemplate = process.env.TEMPLATE_PATH;
 
-        const pdfPathFiador = `./src/domain/pdf/views/aluguel-fiador/contrato-locacao-fiador.pdf`;
+        const pdfPathFiador = `${pathTemplate}/aluguel-fiador/contrato-locacao-fiador.pdf`;
 
         const dataLocacaoFiador = dataFiador as ContratoAluguelFiador;
         dataFiador.date = dateProvider.date;
@@ -22,7 +22,27 @@ export class PdfProviderFiador {
                 dataLocacaoFiador
             );
             const browser = await puppeteer.launch({
-                executablePath: '/usr/bin/chromium-browser',
+                headless: 'new',
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-gpu',
+                    '--disable-web-security',
+                    '--disable-extensions',
+                    '--no-first-run',
+                    '--disable-default-apps',
+                    '--disable-sync',
+                    '--disable-translate',
+                    '--disable-plugins',
+                    '--disable-background-timer-throttling',
+                    '--disable-renderer-backgrounding',
+                    '--disable-backgrounding-occluded-windows',
+                    '--disable-client-side-phishing-detection',
+                    '--disable-ipc-flooding-protection'
+                ],
+                ignoreHTTPSErrors: true,
+                timeout: 0
             });
 
             const page = await browser.newPage();
@@ -39,11 +59,14 @@ export class PdfProviderFiador {
                     right: '60px',
                 },
             });
+            
+            await browser.close();
             console.log('PDF Gerado fiador');
             const uploadPDF = await uploadProvider(pdfPathFiador);
             return uploadPDF;
         } catch (error) {
-            console.log(error);
+            console.error('Erro ao gerar PDF fiador:', error);
+            throw error;
         }
     }
 }

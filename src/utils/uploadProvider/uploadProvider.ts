@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { dateProvider } from '../dateProvider/dateProvider';
 
 export async function uploadProvider(filePath: string): Promise<any> {
-
-    const fileContent = fs.readFileSync(filePath);
+    try {
+        const fileContent = fs.readFileSync(filePath);
 
         const params = {
             Bucket: `${process.env.AWS_BUCKET_NAME}`,
@@ -17,21 +17,22 @@ export async function uploadProvider(filePath: string): Promise<any> {
         const s3 = new AWS.S3({
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
             secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            endpoint: process.env.AWS_ENDPOINT || undefined,
+            region: process.env.AWS_REGION || 'us-east-1',
+            s3ForcePathStyle: true,
+            signatureVersion: 'v4',
         });
 
-       const file = await s3.upload(params, (err: any, data: any) => {
-            if (err) {
-                return err;
-            } else {
-                console.log(data);
-
-            }
-        }).promise();
+        const file = await s3.upload(params).promise();
 
         const result = s3.getSignedUrl('getObject', {
             Bucket: `${process.env.AWS_BUCKET_NAME}`,
             Key: file.Key,
         })
 
-        return result.toString()      
+        return result.toString();
+    } catch (error) {
+        console.error('Erro no upload para S3:', error);
+        throw error;
+    }      
 }
