@@ -17,6 +17,10 @@ export async function uploadProvider(filePath: string): Promise<any> {
         const s3 = new AWS.S3({
             accessKeyId: process.env.AWS_ACCESS_KEY_ID,
             secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+            endpoint: process.env.AWS_ENDPOINT || undefined,
+            region: process.env.AWS_REGION || 'us-east-1',
+            s3ForcePathStyle: true,
+            signatureVersion: 'v4',
         });
 
        const file = await s3.upload(params, (err: any, data: any) => {
